@@ -1,0 +1,11 @@
+{
+    "actorSpecification": 1,
+    "name": "edgar-filing-monitor",
+    "title": "SEC EDGAR Filing Monitor — 8-K, Insider Trading & 13F",
+    "description": "Track SEC EDGAR filings by ticker: 8-K material events, Form 4 insider trades, 13F institutional holdings. Delta mode, Telegram alerts, webhook support. No proxy needed.",
+    "version": "1.0",
+    "buildTag": "latest",
+    "dockerfile": "./Dockerfile",
+    "readme": "./README.md",
+    "input": "./input_schema.json"
+}

@@ -1,0 +1,105 @@
+{
+    "title": "SEC EDGAR Filing Monitor",
+    "description": "Monitor SEC EDGAR for new 8-K (material events), Form 4 (insider trading), and 13F (institutional portfolio) filings by ticker symbol. Sends Telegram and/or webhook alerts on new filings.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "tickers": {
+            "title": "Tickers to monitor",
+            "type": "array",
+            "description": "List of stock ticker symbols to monitor (e.g. AAPL, TSLA, NVDA). Leave empty to monitor all recent filings.",
+            "editor": "stringList",
+            "default": [],
+            "example": ["AAPL", "TSLA", "NVDA", "MSFT"]
+        },
+        "form_types": {
+            "title": "Filing types to monitor",
+            "type": "array",
+            "description": "Which SEC form types to fetch.",
+            "editor": "select",
+            "default": ["8-K", "4", "13F-HR"],
+            "items": {
+                "type": "string",
+                "enum": ["8-K", "4", "13F-HR", "13F-HR/A"],
+                "enumTitles": [
+                    "8-K — Material events (earnings, M&A, leadership changes)",
+                    "Form 4 — Insider trading (buy/sell by executives)",
+                    "13F-HR — Institutional portfolio (quarterly holdings)",
+                    "13F-HR/A — Institutional portfolio amendment"
+                ]
+            }
+        },
+        "delta_mode": {
+            "title": "Delta mode (only new filings)",
+            "type": "boolean",
+            "description": "Only return filings not seen in previous runs. Uses Apify KV Store for deduplication.",
+            "default": true,
+            "editor": "checkbox"
+        },
+        "days_back": {
+            "title": "Days back (initial run)",
+            "type": "integer",
+            "description": "On the first run (no history), fetch filings from the last N days. Subsequent runs use delta mode.",
+            "default": 7,
+            "minimum": 1,
+            "maximum": 90,
+            "editor": "number"
+        },
+        "max_filings_per_ticker": {
+            "title": "Max filings per ticker",
+            "type": "integer",
+            "description": "Maximum filings to fetch per ticker per run. 0 = unlimited.",
+            "default": 10,
+            "minimum": 0,
+            "maximum": 100,
+            "editor": "number"
+        },
+        "insider_transaction_types": {
+            "title": "Form 4: Transaction types to alert on",
+            "type": "array",
+            "description": "Filter Form 4 filings by transaction type. Leave empty for all.",
+            "editor": "select",
+            "default": [],
+            "items": {
+                "type": "string",
+                "enum": ["P", "S", "A", "D", "G", "F"],
+                "enumTitles": [
+                    "P — Open market purchase",
+                    "S — Open market sale",
+                    "A — Award / grant",
+                    "D — Disposition",
+                    "G — Gift",
+                    "F — Tax withholding"
+                ]
+            }
+        },
+        "min_insider_value_usd": {
+            "title": "Form 4: Minimum transaction value (USD)",
+            "type": "integer",
+            "description": "Only alert on insider transactions above this USD value. 0 = all transactions.",
+            "default": 0,
+            "minimum": 0,
+            "editor": "number"
+        },
+        "telegram_bot_token": {
+            "title": "Telegram bot token",
+            "type": "string",
+            "description": "Your Telegram bot token from @BotFather. Use an Apify Secret for security (e.g. @TELEGRAM_TOKEN).",
+            "editor": "textfield",
+            "isSecret": true
+        },
+        "telegram_chat_id": {
+            "title": "Telegram chat ID",
+            "type": "string",
+            "description": "Your Telegram chat or group ID. Get it from @userinfobot.",
+            "editor": "textfield"
+        },
+        "webhook_url": {
+            "title": "Webhook URL (optional)",
+            "type": "string",
+            "description": "POST new filings to this URL (Zapier, Make, n8n, etc.).",
+            "editor": "textfield"
+        }
+    },
+    "required": []
+}

@@ -1,0 +1,20 @@
+{
+    "name": "edgar-filing-monitor",
+    "version": "1.0.0",
+    "description": "Apify Actor: SEC EDGAR Filing Monitor — track 8-K, Form 4 (insider trading) and 13F filings by ticker with Telegram + Webhook alerts",
+    "main": "src/main.js",
+    "type": "module",
+    "scripts": {
+        "start": "node src/main.js",
+        "start:dev": "apify run"
+    },
+    "dependencies": {
+        "apify": "^3.2.2",
+        "node-fetch": "^3.3.2",
+        "xml2js": "^0.6.2"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "license": "Apache-2.0"
+}
