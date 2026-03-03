@@ -7,5 +7,41 @@
     "buildTag": "latest",
     "dockerfile": "./Dockerfile",
     "readme": "./README.md",
-    "input": "./input_schema.json"
+    "input": "./input_schema.json",
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "fields": {},
+            "views": {
+                "overview": {
+                    "title": "Filings overview",
+                    "transformation": {
+                        "fields": [
+                            "ticker",
+                            "form_type",
+                            "company_name",
+                            "filing_date",
+                            "alert_type",
+                            "insider_name",
+                            "total_value_usd",
+                            "document_url"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "ticker": { "label": "Ticker", "format": "text" },
+                            "form_type": { "label": "Form", "format": "text" },
+                            "company_name": { "label": "Company", "format": "text" },
+                            "filing_date": { "label": "Date", "format": "date" },
+                            "alert_type": { "label": "Type", "format": "text" },
+                            "insider_name": { "label": "Insider", "format": "text" },
+                            "total_value_usd": { "label": "Value USD", "format": "number" },
+                            "document_url": { "label": "Filing", "format": "link" }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
