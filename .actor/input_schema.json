@@ -9,8 +9,9 @@
             "type": "array",
             "description": "List of stock ticker symbols to monitor (e.g. AAPL, TSLA, NVDA). Leave empty to monitor all recent filings.",
             "editor": "stringList",
-            "default": [],
-            "example": ["AAPL", "TSLA", "NVDA", "MSFT"]
+            "default": ["AAPL"],
+            "example": ["AAPL", "TSLA", "NVDA", "MSFT"],
+            "prefill": ["AAPL"]
         },
         "form_types": {
             "title": "Filing types to monitor",
@@ -49,10 +50,11 @@
             "title": "Max filings per ticker",
             "type": "integer",
             "description": "Maximum filings to fetch per ticker per run. 0 = unlimited.",
-            "default": 10,
+            "default": 5,
             "minimum": 0,
             "maximum": 100,
-            "editor": "number"
+            "editor": "number",
+            "prefill": 5
         },
         "insider_transaction_types": {
             "title": "Form 4: Transaction types to alert on",
