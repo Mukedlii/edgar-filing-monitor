@@ -37,12 +37,12 @@
   "ticker": "AAPL",
   "company_name": "Apple Inc.",
   "form_type": "8-K",
-  "filing_date": "2025-04-15",
+  "filing_date": "2026-03-29",
   "accession_number": "0000320193-25-000041",
   "document_url": "https://www.sec.gov/Archives/...",
   "alert_type": "8k_event",
   "event_summary": "Results of operations (earnings); Departure/appointment of executives",
-  "scraped_at": "2025-04-15T08:00:00.000Z"
+  "scraped_at": "2026-03-29T08:00:00.000Z"
 }
 ```
 
@@ -139,7 +139,7 @@ Apify Console → **Settings → Secrets** → add secret `TELEGRAM_TOKEN` → p
 **Example alert:**
 ```
 📊 SEC EDGAR Filing Alert
-Apr 15, 2025 — 3 new filing(s)
+Mar 29, 2026 — 3 new filing(s)
 
 👤 Insider Trades (2):
 • $AAPL | Tim Cook (CEO)
@@ -148,7 +148,7 @@ Apr 15, 2025 — 3 new filing(s)
   Open market purchase $2,100,000 — Filing
 
 📋 8-K Material Events (1):
-• $TSLA | 2025-04-15
+• $TSLA | 2026-03-29
   Results of operations (earnings) — Filing
 
 View full dataset
